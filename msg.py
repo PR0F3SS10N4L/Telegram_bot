@@ -1,20 +1,14 @@
 import telebot
 from telebot import types
-import sqlite3
+from TG import bot
+from database import sql
+from database import db
 from iot import iot_001
 from iot import iot_005
 from iot import iot_006
 from iot import iot_132
 from iot import iot_220
-from database import sql
-from database import db
 import importlib
-
-
-bot = telebot.TeleBot('7394659897:AAEGszaR4gSJ8tdP-9SPbM-n0Wim0cB4zIs')
-#7394659897:AAEGszaR4gSJ8tdP-9SPbM-n0Wim0cB4zIs
-#8131718795:AAGMPPS1v1dB4x4kWit2VCRI8eLz-98ilUE
-
 
 @bot.message_handler(commands=['start'])
 def start(message):
@@ -162,5 +156,3 @@ def handler(message):
     if (message.text).split()[0]=='220':
         a,b,c = (message.text).split()
         bot.send_message(message.chat.id, iot_220[int(b)-1][int(c)-1])
-  
-bot.polling(none_stop=True)
